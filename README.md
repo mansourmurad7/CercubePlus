@@ -1,16 +1,14 @@
 ## Cercube with extra features!
 
-![cydia-1900000833-iphone-0-1628581139 2](https://user-images.githubusercontent.com/52943116/135557251-f4be8ccf-8f0b-4d19-9fcf-6c9544aba281.PNG)
-
+Original sources are from [CercubePlus](https://github.com/qnblackcat/CercubePlus) by [**qnblackcat**](https://github.com/qnblackcat). This fork just encompasses my own customization and tweak variation.
 
 # Table of Contents
 
-* [Credits](#credits)
-* [Features](#features)
-* [Known issues](#known-issues)
-* [Download (IPA)](#download-ipa)
-* [Building (optional)](#building-optional)
-
+- [Credits](#credits)
+- [Features](#features)
+- [Known issues](#known-issues)
+- [Download (IPA)](#download-ipa)
+- [Building (optional)](#building-optional)
 
 # Credits
 
@@ -30,7 +28,6 @@
 
 - [theos team](https://github.com/theos/theos) for theos & theos-jailed.
 
-
 # Features
 
 1. **Cercube:**
@@ -47,28 +44,15 @@
 
 3. **YouPiP:** enable YouTube's **native PiP**. More options are in YouTube Settings => General.
 
-4. **YTUHD:** unlock VP9 codec and in effect, enables video quality of 2K and 4K. You can configure YTUHD in YouTube's Settings - Video quality preferences.
-
-5. **YouTube Dislike Return:** brings back Dislike counts under YouTube videos using **ReturnYoutubeDislike**'s API.
-
 <details>
   <summary>Expand!</summary>
 
-6. **YTClassicVideoQuality:** since YouTube v16.xx, you need one more step to change the video quality. YTClassicVideoQuality brings back the old video quality selector, which is a lot better than the new one.
-
-7. **YTNoHoverCards:** offer an option to enable/disable the annoying suggested videos show up at the end of the videos.
-
-8. **YTABGoodies:** allow you to disable some YouTube A/B testing features. It is a combination of several tweaks, such as:
+4. **YTABGoodies:** allow you to disable some YouTube A/B testing features. It is a combination of several tweaks, such as:
 
 - YouAreThere: disable "Video paused. Continue watching?" popup in the YouTube app when you play a long video.
 
-- YouRememberCaption: make YouTube remember your video caption setting (if not already).
-
-- YTNoCheckLocalNetwork: block the Local Network permission popup.
-
-9. **NOYTPremium:** remove YouTube Premium upsell alerts.
+5. **NOYTPremium:** remove YouTube Premium upsell alerts.
 </details>
-
 
 # Known issues
 
@@ -76,40 +60,36 @@
 
 2. **YTUHD**: [Stuttering on 4K videos](https://github.com/qnblackcat/uYouPlus/issues/6).
 
-3. **YouPiP** (iOS 14.0 - 14.4.2): due to Apple's fault, you may encounter the *speedup-bug* as described [here](https://drive.google.com/file/d/1NKdv1fr_KRWgD8nhkMDfG2eLBnbdeVtX/view?usp=sharing). The bug also happens when you try to play multi-sources of sound at the same time. Enable **LegacyPiP** is a workaround. Keep in mind that LegacyPiP also removes UHD quality and breaks YouTube Autoplay next. Use it at your own risk!
+3. **YouPiP** (iOS 14.0 - 14.4.2): due to Apple's fault, you may encounter the _speedup-bug_ as described [here](https://drive.google.com/file/d/1NKdv1fr_KRWgD8nhkMDfG2eLBnbdeVtX/view?usp=sharing). The bug also happens when you try to play multi-sources of sound at the same time. Enable **LegacyPiP** is a workaround. Keep in mind that LegacyPiP also removes UHD quality and breaks YouTube Autoplay next. Use it at your own risk!
 
-4. **Not a bug**: 
+4. **Not a bug**:
 
-- The app won't be able to receive push notifications if you use a free developer account to sideload it. 
+- The app won't be able to receive push notifications if you use a free developer account to sideload it.
 
 - It's impossible to fix deep-link (a.k.a Open in the YouTube app). However, you can use this [Shortcuts](https://shortcutsgallery.com/shortcuts/open-in-youtube/) as a workaround (tested on iOS 14). **Credit:** RandomAccessMemories#5025
-
 
 # Download (IPA)
 
 - **CercubePlus** (or you can call it Cercube+) requires iOS & iPadOS 13.0 and later. The latest version of **CercubePlus** can be found in the [Release tab](https://github.com/qnblackcat/CercubePlus/releases).
 
-- For AltStore user: 
+- For AltStore user:
+
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
   - [Open in AltStore (v17.09.1-5.3.6)](https://tinyurl.com/5mxbznvw) - It will take a while to install because AltStore needs to download the IPA.
 
 - Version info: _(Mar 12)_
 
-| **Tweaks/App** | **Version** | **Open source** |
-| :------------: | :----------:| :-------------: |
-| **YouTube** | 17.09.1 | ✖︎ |
-| **Cercube** | 5.3.7 | ✖︎ |
-| **Return YouTube Dislike** | 1.6.3 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
-| **iSponsorBlock** | 1.0-13 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
-| **Alderis Color Picker** | 1.1.2| [✔︎](https://github.com/hbang/Alderis) |
-| **YTABGoodies** | 1.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytabgoodies.html) |
-| **NoYTPremium** | 1.0.2 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
-| **YTClassicVideoQuality** | 1.0.1 | [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality) |
-| **YTNoHoverCards** | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
-| **YTUHD** | 1.2.6 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | 1.6.8 | [✔︎](https://github.com/PoomSmart/YouPiP) |
-
+|      **Tweaks/App**      | **Version** |                          **Open source**                           |
+| :----------------------: | :---------: | :----------------------------------------------------------------: |
+|       **YouTube**        |   17.09.1   |                                 ✖︎                                 |
+|       **Cercube**        |    5.3.7    |                                 ✖︎                                 |
+|    **iSponsorBlock**     |   1.0-13    |        [✔︎](https://github.com/Galactic-Dev/iSponsorBlock)         |
+| **Alderis Color Picker** |    1.1.2    |               [✔︎](https://github.com/hbang/Alderis)               |
+|     **YTABGoodies**      |     1.0     | [✔︎](https://poomsmart.github.io/repo/depictions/ytabgoodies.html) |
+|     **NoYTPremium**      |    1.0.2    |           [✔︎](https://github.com/PoomSmart/NoYTPremium)           |
+|    **YTNoHoverCards**    |    0.0.3    |         [✔︎](https://github.com/level3tjg/YTNoHoverCards)          |
+|        **YouPiP**        |    1.6.8    |             [✔︎](https://github.com/PoomSmart/YouPiP)              |
 
 # Building (optional)
 

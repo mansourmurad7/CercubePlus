@@ -23,14 +23,14 @@ else
 # Makefile
 	read -e -p "==> Path to the decrypted YouTube iPA: " PATHTOIPA
 	if [[ $PATHTOIPA == *.ipa ]]
-then 
+then
 	sed -i '' "14s#.*#CercubePlus_IPA = $PATHTOIPA#g" ./Makefile
 	make package
 	open ./packages
 else
 	echo "This is not an iPA!"
 	fi
-# Clean up	
+# Clean up
 	tput setaf 1 && echo -e "==> \033[1mCleaning up...\033[0m"
 	find Tweaks/Cercube -mindepth 1 -name me.alfhaily.cercube_5.3.7_iphoneos-arm.deb -prune -o -exec rm -rf {} +
 	rm -rf Resources
