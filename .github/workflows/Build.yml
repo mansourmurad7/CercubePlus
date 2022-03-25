@@ -30,11 +30,12 @@ jobs:
   build:
     name: Build CercubePlus
     runs-on: macos-latest
-    env:
-      THEOS: theos
 
     steps:
-      - name: Checkout
+      - name: Set Env
+        run: echo ::set-env name=workspace::$GITHUB_WORKSPACE
+
+      - name: Checkout Main
         uses: actions/checkout@v3
         with:
           path: main
@@ -79,22 +80,26 @@ jobs:
       - name: Install Theos Jailed
         run: |
           ./theos-jailed/install
+        env:
+          THEOS: ${{ env.workspace }}/theos
 
       - name: Setup Dependencies
-        env:
-          CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
-          YOUTUBE_URL: ${{ github.event.inputs.decrypted_youtube_url }}
         run: |
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "theos/include" &&
           curl "https://apt.alfhaily.me/files/me.alfhaily.cercube_$CERCUBE_VERSION_iphoneos-arm.deb" --output "Tweaks/Cercube/me.alfhaily.cercube_$CERCUBE_VERSION_iphoneos-arm.deb" &&
           curl "$YOUTUBE_URL" --output YouTube.ipa &&
           sed -i '' "14s#.*#CercubePlus_IPA = YouTube.ipa#g" ./Makefile
+        env:
+          CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
+          YOUTUBE_URL: ${{ github.event.inputs.decrypted_youtube_url }}
 
       - name: Build Package
         id: build_package
         run: |
           make package FINALPACKAGE=1
           echo "::set-output name=package::$(ls -t packages | head -n1)"
+        env:
+          THEOS: ${{ env.workspace }}/theos
 
       - name: Create Release
         id: create_release
