@@ -58,11 +58,9 @@ Original sources are from [CercubePlus](https://github.com/qnblackcat/CercubePlu
 
 1. **Cercube**: Hide Cast button is not working.
 
-2. **YTUHD**: [Stuttering on 4K videos](https://github.com/qnblackcat/uYouPlus/issues/6).
+2. **YouPiP** (iOS 14.0 - 14.4.2): due to Apple's fault, you may encounter the _speedup-bug_ as described [here](https://drive.google.com/file/d/1NKdv1fr_KRWgD8nhkMDfG2eLBnbdeVtX/view?usp=sharing). The bug also happens when you try to play multi-sources of sound at the same time. Enable **LegacyPiP** is a workaround. Keep in mind that LegacyPiP also removes UHD quality and breaks YouTube Autoplay next. Use it at your own risk!
 
-3. **YouPiP** (iOS 14.0 - 14.4.2): due to Apple's fault, you may encounter the _speedup-bug_ as described [here](https://drive.google.com/file/d/1NKdv1fr_KRWgD8nhkMDfG2eLBnbdeVtX/view?usp=sharing). The bug also happens when you try to play multi-sources of sound at the same time. Enable **LegacyPiP** is a workaround. Keep in mind that LegacyPiP also removes UHD quality and breaks YouTube Autoplay next. Use it at your own risk!
-
-4. **Not a bug**:
+3. **Not a bug**:
 
 - The app won't be able to receive push notifications if you use a free developer account to sideload it.
 
@@ -70,13 +68,7 @@ Original sources are from [CercubePlus](https://github.com/qnblackcat/CercubePlu
 
 # Download (IPA)
 
-- **CercubePlus** (or you can call it Cercube+) requires iOS & iPadOS 13.0 and later. The latest version of **CercubePlus** can be found in the [Release tab](https://github.com/qnblackcat/CercubePlus/releases).
-
-- For AltStore user:
-
-  - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
-
-  - [Open in AltStore (v17.09.1-5.3.6)](https://tinyurl.com/5mxbznvw) - It will take a while to install because AltStore needs to download the IPA.
+- **CercubePlus** (or you can call it Cercube+) requires iOS & iPadOS 13.0 and later. The latest version of **CercubePlus** can be found in the [Release tab](https://github.com/ISnackable/CercubePlus/releases).
 
 - Version info: _(Mar 12)_
 
