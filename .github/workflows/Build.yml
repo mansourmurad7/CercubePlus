@@ -58,8 +58,10 @@ jobs:
           curl -LO https://github.com/theos/sdks/archive/master.zip
           TMP=$(mktemp -d)
           unzip master.zip -d $TMP
-          mv $TMP/sdks-master/*.sdk theos/sdks
+          mv $TMP/sdks-master/*.sdk $THEOS/sdks
           rm -r master.zip $TMP
+        env:
+          THEOS: ${{ env.workspace }}/theos
 
       - name: Copy iOS 15 SDK
         run: |
