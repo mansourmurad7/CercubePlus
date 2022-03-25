@@ -1,15 +1,20 @@
 [submodule "Tweaks/Alderis"]
 	path = Tweaks/Alderis
 	url = https://github.com/ISnackable/Alderis
+	branch = master
 [submodule "Tweaks/iSponsorBlock"]
 	path = Tweaks/iSponsorBlock
 	url = https://github.com/ISnackable/iSponsorBlock
-[submodule "Tweaks/YouTubeHeader"]
-	path = Tweaks/YouTubeHeader
-	url = https://github.com/PoomSmart/YouTubeHeader
+	branch = master
 [submodule "Tweaks/YouPiP"]
 	path = Tweaks/YouPiP
-	url = https://github.com/PoomSmart/YouPiP/
+	url = https://github.com/PoomSmart/YouPiP.git
+	branch = main
+[submodule "Tweaks/YouTubeHeader"]
+	path = Tweaks/YouTubeHeader
+	url = https://github.com/PoomSmart/YouTubeHeader.git
+	branch = main
 [submodule "Tweaks/PSHeader"]
 	path = Tweaks/PSHeader
-	url = https://github.com/PoomSmart/PSHeader
+	url = https://github.com/PoomSmart/PSHeader.git
+	branch = master
