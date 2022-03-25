@@ -81,17 +81,19 @@ jobs:
 
       - name: Setup Dependencies
         run: |
-          curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "theos/include" &&
+          curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include" &&
           curl "https://apt.alfhaily.me/files/me.alfhaily.cercube_$CERCUBE_VERSION_iphoneos-arm.deb" --output "Tweaks/Cercube/me.alfhaily.cercube_$CERCUBE_VERSION_iphoneos-arm.deb" &&
           curl "$YOUTUBE_URL" --output YouTube.ipa &&
           sed -i '' "14s#.*#CercubePlus_IPA = YouTube.ipa#g" ./Makefile
         env:
+          THEOS: ${{ env.workspace }}/theos
           CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
           YOUTUBE_URL: ${{ github.event.inputs.decrypted_youtube_url }}
 
       - name: Build Package
         id: build_package
         run: |
+          cd main
           make package FINALPACKAGE=1
           echo "::set-output name=package::$(ls -t packages | head -n1)"
         env:
