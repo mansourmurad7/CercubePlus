@@ -55,10 +55,14 @@ jobs:
 
       - name: Download iOS SDKs
         run: |
+          curl -LO https://github.com/theos/sdks/archive/master.zip
           curl -LO https://github.com/chrisharper22/sdks/archive/main.zip
           TMP=$(mktemp -d)
+          unzip master.zip -d $TMP
           unzip main.zip -d $TMP
+          mv $TMP/sdks-master/*.sdk $THEOS/sdks
           mv $TMP/sdks-main/*.sdk $THEOS/sdks
+          rm -r master.zip $TMP
           rm -r main.zip $TMP
         env:
           THEOS: ${{ env.workspace }}/theos
