@@ -55,12 +55,11 @@ jobs:
 
       - name: Download iOS SDKs
         run: |
-          curl -LO https://github.com/theos/sdks/archive/master.zip
+          curl -LO https://github.com/chrisharper22/sdks/archive/main.zip
           TMP=$(mktemp -d)
           unzip master.zip -d $TMP
           mv $TMP/sdks-master/*.sdk $THEOS/sdks
           rm -r master.zip $TMP
-          cp -r /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15*.sdk $THEOS/sdks
         env:
           THEOS: ${{ env.workspace }}/theos
 
@@ -81,8 +80,6 @@ jobs:
       - name: Download Dylibs
         run: |
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h" &&
-          curl "https://raw.githubusercontent.com/PoomSmart/YouPiP/main/AVKit-Header.h" --output "$THEOS/include/AVKit-Header.h" &&
-          curl "https://raw.githubusercontent.com/PoomSmart/YouPiP/main/Header.h" --output "$THEOS/include/Header.h" &&
           curl "https://apt.alfhaily.me/files/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" --output "./main/Tweaks/Cercube/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" &&
           curl "$YOUTUBE_URL" --output ./main/YouTube.ipa &&
           sed -i '' "14s#.*#CercubePlus_IPA = ${{ env.workspace }}/main/YouTube.ipa#g" ./main/Makefile
