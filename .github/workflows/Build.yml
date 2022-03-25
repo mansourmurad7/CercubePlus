@@ -82,9 +82,9 @@ jobs:
       - name: Setup Dependencies
         run: |
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h" &&
-          curl "https://apt.alfhaily.me/files/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" --output "${{ env.workspace }}/main/Tweaks/Cercube/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" &&
-          curl "$YOUTUBE_URL" --output ${{ env.workspace }}/main/YouTube.ipa &&
-          sed -i '' "14s#.*#CercubePlus_IPA = ${{ env.workspace }}/main/YouTube.ipa#g" ./Makefile
+          curl "https://apt.alfhaily.me/files/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" --output "./main/Tweaks/Cercube/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" &&
+          curl "$YOUTUBE_URL" --output ./main/YouTube.ipa &&
+          sed -i '' "14s#.*#CercubePlus_IPA = ${{ env.workspace }}/main/YouTube.ipa#g" ./main/Makefile
         env:
           THEOS: ${{ env.workspace }}/theos
           CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
