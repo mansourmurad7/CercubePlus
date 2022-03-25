@@ -1,10 +1,6 @@
 name: Build and Release CercubePlus
 
 on:
-  push:
-    tags:
-      - "v*"
-  workflow_call:
   workflow_dispatch:
     inputs:
       cercube_version:
@@ -33,7 +29,7 @@ jobs:
 
     steps:
       - name: Set Env
-        run: echo ::set-env name=workspace::$GITHUB_WORKSPACE
+        run: echo "workspace=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
       - name: Checkout Main
         uses: actions/checkout@v3
