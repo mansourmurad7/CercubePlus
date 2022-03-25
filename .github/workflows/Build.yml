@@ -64,13 +64,6 @@ jobs:
         env:
           THEOS: ${{ env.workspace }}/theos
 
-      - name: Debug
-        run: |
-          ls -la $THEOS
-          ls -la $THEOS/sdks
-        env:
-          THEOS: ${{ env.workspace }}/theos
-
       - name: Setup Theos Jailed
         uses: actions/checkout@v3
         with:
