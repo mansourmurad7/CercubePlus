@@ -41,7 +41,7 @@ jobs:
           submodules: recursive
 
       - name: Update Submodules
-        if: ${{ github.event.inputs.update_submodules == "true" }}
+        if: ${{ github.event.inputs.update_submodules == 'true' }}
         run: |
           git submodule update --remote --recursive
 
