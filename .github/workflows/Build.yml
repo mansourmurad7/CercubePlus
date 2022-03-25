@@ -1,0 +1,117 @@
+name: Build and Release CercubePlus
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_call:
+  workflow_dispatch:
+    inputs:
+      cercube_version:
+        description: "The version of Cercube you want to package"
+        default: "5.3.7"
+        required: false
+        type: string
+      decrypted_youtube_url:
+        description: "The URL to the decrypted YouTube ipa to package"
+        required: true
+        type: string
+      update_submodules:
+        description: "Update Submodules when running workflow"
+        default: false
+        required: false
+        type: boolean
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build CercubePlus
+    runs-on: macos-latest
+    env:
+      THEOS: theos
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Update Submodules
+        if: ${{ github.event.inputs.update_submodules }} == "true"
+        run: |
+          git submodule update --remote --recursive
+
+      - name: Install Dependencies
+        run: brew install ldid xz
+
+      - name: Setup Theos
+        uses: actions/checkout@v3
+        with:
+          repository: theos/theos
+          ref: master
+          path: theos
+          submodules: recursive
+
+      - name: Download iOS SDKs
+        run: |
+          curl -LO https://github.com/theos/sdks/archive/master.zip
+          TMP=$(mktemp -d)
+          unzip master.zip -d $TMP
+          mv $TMP/sdks-master/*.sdk theos/sdks
+          rm -r master.zip $TMP
+
+      - name: Copy iOS 15 SDK
+        run: |
+          cp -r /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15*.sdk theos/sdks
+
+      - name: Setup Theos Jailed
+        uses: actions/checkout@v3
+        with:
+          repository: kabiroberai/theos-jailed
+          ref: master
+          path: theos-jailed
+          submodules: recursive
+
+      - name: Install Theos Jailed
+        run: |
+          ./thoes-jailed/install
+
+      - name: Setup Dependencies
+        env:
+          CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
+          YOUTUBE_URL: ${{ github.event.inputs.decrypted_youtube_url }}
+        run: |
+          curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "theos/include" &&
+          curl "https://apt.alfhaily.me/files/me.alfhaily.cercube_$CERCUBE_VERSION_iphoneos-arm.deb" --output "Tweaks/Cercube/me.alfhaily.cercube_$CERCUBE_VERSION_iphoneos-arm.deb" &&
+          curl "$YOUTUBE_URL" --output YouTube.ipa &&
+          sed -i '' "14s#.*#CercubePlus_IPA = YouTube.ipa#g" ./Makefile
+
+      - name: Build Package
+        id: build_package
+        run: |
+          make package FINALPACKAGE=1
+          echo "::set-output name=package::$(ls -t packages | head -n1)"
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./packages/${{ steps.build_package.outputs.package }}
+          asset_name: ${{ steps.build_package.outputs.package }}
+          asset_content_type: application/vnd.debian.binary-package
