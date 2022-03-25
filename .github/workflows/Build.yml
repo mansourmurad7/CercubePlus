@@ -31,7 +31,7 @@ jobs:
     name: Build CercubePlus
     runs-on: macos-latest
     env:
-      THEOS: ~/theos
+      THEOS: theos
 
     steps:
       - name: Checkout
