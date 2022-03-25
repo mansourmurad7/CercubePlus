@@ -81,7 +81,8 @@ jobs:
 
       - name: Setup Dependencies
         run: |
-          curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include" &&
+          echo "::add-mask::$YOUTUBE_URL" &&
+          curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h" &&
           curl "https://apt.alfhaily.me/files/me.alfhaily.cercube_$CERCUBE_VERSION_iphoneos-arm.deb" --output "Tweaks/Cercube/me.alfhaily.cercube_$CERCUBE_VERSION_iphoneos-arm.deb" &&
           curl "$YOUTUBE_URL" --output YouTube.ipa &&
           sed -i '' "14s#.*#CercubePlus_IPA = YouTube.ipa#g" ./Makefile
