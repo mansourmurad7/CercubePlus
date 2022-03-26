@@ -100,6 +100,10 @@ jobs:
         env:
           THEOS: ${{ env.workspace }}/theos
 
+      - name: tmate session if tests fail
+        if: failure() && github.event_name == 'workflow_dispatch'
+        uses: mxschmitt/action-tmate@v3
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
