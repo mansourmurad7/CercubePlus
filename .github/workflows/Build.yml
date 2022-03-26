@@ -12,11 +12,6 @@ on:
         description: "The URL to the decrypted YouTube ipa to package"
         required: true
         type: string
-      update_submodules:
-        description: "Update Submodules when running workflow"
-        default: false
-        required: false
-        type: boolean
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -37,11 +32,6 @@ jobs:
           path: main
           submodules: recursive
 
-      - name: Update Submodules
-        if: ${{ github.event.inputs.update_submodules == 'true' }}
-        run: |
-          git -C main submodule update --remote --recursive
-
       - name: Install Dependencies
         run: brew install ldid xz
 
@@ -53,7 +43,7 @@ jobs:
           path: theos
           submodules: recursive
 
-      - name: Download iOS SDKs
+      - name: Download iOS 15 SDK
         run: |
           curl -LO https://github.com/chrisharper22/sdks/archive/main.zip
           TMP=$(mktemp -d)
@@ -81,9 +71,9 @@ jobs:
         run: |
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h" &&
           curl "https://apt.alfhaily.me/files/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" --output "./main/Tweaks/Cercube/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" &&
-          wget "$YOUTUBE_URL" -O ./main/YouTube.ipa &&
+          wget "$YOUTUBE_URL" --no-verbose -O ./main/YouTube.ipa &&
           sed -i '' "14s#.*#CercubePlus_IPA = ${{ env.workspace }}/main/YouTube.ipa#g" ./main/Makefile &&
-          cd ./main/Tweaks/Cercube && tar -xf me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb && tar -xf data.tar.*
+          cd ./main/Tweaks/Cercube && tar -xf "me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" && tar -xf data.tar.*
         env:
           THEOS: ${{ env.workspace }}/theos
           CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
@@ -103,9 +93,10 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: v${{ github.run_number }}-${{ env.CERCUBE_VERSION }}
+          release_name: Release v${{ github.run_number }}-${{ env.CERCUBE_VERSION }}
           draft: false
           prerelease: false
 
@@ -113,8 +104,9 @@ jobs:
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ${{ env.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
-          asset_name: ${{ steps.build_package.outputs.package }}
+          asset_name: CercubePlus${{ github.run_number }}-${{ env.CERCUBE_VERSION }}.ipa
           asset_content_type: application/vnd.debian.binary-package
