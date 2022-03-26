@@ -23,11 +23,11 @@ export SDKVERSION = 15.0
 export SYSROOT = $(THEOS)/sdks/iPhoneOS15.0.sdk
 
 before-package::
-	@tput setaf 4 && echo -e "==> \033[1mMoving tweak's bundle to Resources/...\033[0m"
+	@echo -e "==> Moving tweak's bundle to Resources/..."
 	@mkdir -p Resources/Frameworks/Alderis.framework && find .theos/obj/install/Library/Frameworks/Alderis.framework -maxdepth 1 -type f -exec cp {} Resources/Frameworks/Alderis.framework/ \;
 	@cp -R Tweaks/YouPiP/layout/Library/Application\ Support/YouPiP.bundle Resources/
 	@cp -R Tweaks/iSponsorBlock/layout/Library/Application\ Support/iSponsorBlock.bundle Resources/
 	@cp -R Tweaks/Cercube/Library/Application\ Support/Cercube/Cercube.bundle Resources/
-	@tput setaf 5 && echo -e "==> \033[1mChanging the installation path of dylibs...\033[0m"
+	@echo -e "==> Changing the installation path of dylibs..."
 	@codesign --remove-signature .theos/obj/iSponsorBlock.dylib && install_name_tool -change /usr/lib/libcolorpicker.dylib @rpath/libcolorpicker.dylib .theos/obj/iSponsorBlock.dylib
 	@codesign --remove-signature .theos/obj/libcolorpicker.dylib && install_name_tool -change /Library/Frameworks/Alderis.framework/Alderis @rpath/Alderis.framework/Alderis .theos/obj/libcolorpicker.dylib
