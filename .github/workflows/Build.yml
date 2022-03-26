@@ -91,32 +91,36 @@ jobs:
           CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
           YOUTUBE_URL: ${{ github.event.inputs.decrypted_youtube_url }}
 
-      - name: Build Package
-        id: build_package
-        run: |
-          cd ${{ env.workspace }}/main
-          make package FINALPACKAGE=1
-          echo "::set-output name=package::$(ls -t packages | head -n1)"
-        env:
-          THEOS: ${{ env.workspace }}/theos
+      - name: Tmate Session
+        if: github.event_name == 'workflow_dispatch'
+        uses: mxschmitt/action-tmate@v3
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+      # - name: Build Package
+      #   id: build_package
+      #   run: |
+      #     cd ${{ env.workspace }}/main
+      #     make package FINALPACKAGE=1
+      #     echo "::set-output name=package::$(ls -t packages | head -n1)"
+      #   env:
+      #     THEOS: ${{ env.workspace }}/theos
 
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ env.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
-          asset_name: ${{ steps.build_package.outputs.package }}
-          asset_content_type: application/vnd.debian.binary-package
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: Release ${{ github.ref }}
+      #     draft: false
+      #     prerelease: false
+
+      # - name: Upload Release Asset
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+      #     asset_path: ${{ env.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
+      #     asset_name: ${{ steps.build_package.outputs.package }}
+      #     asset_content_type: application/vnd.debian.binary-package
