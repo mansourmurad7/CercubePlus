@@ -14,6 +14,9 @@ CercubePlus_FILES = CercubePlus.x
 CercubePlus_IPA = /path/to/your/decrypted/YouTube/IPA
 ### Important: edit the path to your decrypted YouTube IPA!!!
 
+# Fix make failure in YouPIP
+export YouPiP_FRAMEWORKS = AVKit UIKit AVFoundation
+
 include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
 SUBPROJECTS += Tweaks/Alderis Tweaks/iSponsorBlock Tweaks/YouPiP
