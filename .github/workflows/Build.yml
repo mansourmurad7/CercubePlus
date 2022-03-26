@@ -55,14 +55,11 @@ jobs:
 
       - name: Download iOS SDKs
         run: |
-          curl -LO https://github.com/theos/sdks/archive/master.zip
           curl -LO https://github.com/chrisharper22/sdks/archive/main.zip
           TMP=$(mktemp -d)
-          unzip -qq master.zip -d $TMP
           unzip -qq main.zip -d $TMP
-          mv $TMP/sdks-master/*.sdk $THEOS/sdks
           mv $TMP/sdks-main/*.sdk $THEOS/sdks
-          rm -r master.zip main.zip $TMP
+          rm -r main.zip $TMP
         env:
           THEOS: ${{ env.workspace }}/theos
 
@@ -85,7 +82,8 @@ jobs:
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h" &&
           curl "https://apt.alfhaily.me/files/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" --output "./main/Tweaks/Cercube/me.alfhaily.cercube_${{ env.CERCUBE_VERSION }}_iphoneos-arm.deb" &&
           curl "$YOUTUBE_URL" --output ./main/YouTube.ipa &&
-          sed -i '' "14s#.*#CercubePlus_IPA = ${{ env.workspace }}/main/YouTube.ipa#g" ./main/Makefile
+          sed -i '' "14s#.*#CercubePlus_IPA = ${{ env.workspace }}/main/YouTube.ipa#g" ./main/Makefile &&
+          cd ./main/Tweaks/Cercube && tar -xf me.alfhaily.cercube_5.3.7_iphoneos-arm.deb && tar -xf data.tar.*
         env:
           THEOS: ${{ env.workspace }}/theos
           CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
