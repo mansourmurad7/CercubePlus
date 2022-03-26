@@ -14,13 +14,13 @@ CercubePlus_FILES = CercubePlus.x
 CercubePlus_IPA = /path/to/your/decrypted/YouTube/IPA
 ### Important: edit the path to your decrypted YouTube IPA!!!
 
-# Fix make failure in YouPIP
-export YouPiP_FRAMEWORKS = AVKit UIKit AVFoundation
-
 include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
 SUBPROJECTS += Tweaks/Alderis Tweaks/iSponsorBlock Tweaks/YouPiP
 include $(THEOS_MAKE_PATH)/aggregate.mk
+
+export SDKVERSION = 15.0
+export SYSROOT = $(THEOS)/sdks/iPhoneOS15.0.sdk
 
 before-package::
 	@tput setaf 4 && echo -e "==> \033[1mMoving tweak's bundle to Resources/...\033[0m"
