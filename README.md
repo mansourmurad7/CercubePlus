@@ -18,9 +18,7 @@ Original sources are from [CercubePlus](https://github.com/qnblackcat/CercubePlu
 
 - [HASHBANG Productions](https://github.com/hbang) for [Alderis Color Picker](https://github.com/hbang/Alderis) - a dependency of iSponsorBlock.
 
-- [PoomSmart](https://twitter.com/poomsmart?s=21) - the developer of many tweaks that are used by CercubePlus, such as [YTABGoodies](https://poomsmart.github.io/repo/depictions/ytabgoodies.html), [NOYTPremium](https://poomsmart.github.io/repo/depictions/noytpremium.html), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html) and [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html).
-
-- **Lillie & Poomsmart** for [YouTube Dislike Return](https://github.com/PoomSmart/Return-YouTube-Dislikes)
+- [PoomSmart](https://twitter.com/poomsmart?s=21) - the developer of many tweaks that are used by CercubePlus, such as [YTABGoodies](https://poomsmart.github.io/repo/depictions/ytabgoodies.html), [NOYTPremium](https://poomsmart.github.io/repo/depictions/noytpremium.html), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTAutoFullScreen](https://github.com/PoomSmart/YTAutoFullScreen/), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html), [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html), and [Return YouTube Dislike](https://github.com/PoomSmart/Return-YouTube-Dislikes).
 
 - [level3tjg](https://twitter.com/level3tjg?s=21) for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards).
 
@@ -45,13 +43,20 @@ Original sources are from [CercubePlus](https://github.com/qnblackcat/CercubePlu
 3. **YouPiP:** enable YouTube's **native PiP**. More options are in YouTube Settings => General.
 
 <details>
-  <summary>Expand!</summary>
+  <summary>and many more...!</summary>
 
 4. **YTABGoodies:** allow you to disable some YouTube A/B testing features. It is a combination of several tweaks, such as:
 
 - YouAreThere: disable "Video paused. Continue watching?" popup in the YouTube app when you play a long video.
 
-5. **NOYTPremium:** remove YouTube Premium upsell alerts.
+- YouRememberCaption: make YouTube remember your video caption setting (if not already).
+
+- YTNoCheckLocalNetwork: block the Local Network permission popup.
+
+9. **NOYTPremium:** remove YouTube Premium upsell alerts.
+
+any many more...
+
 </details>
 
 # Known issues
@@ -68,20 +73,35 @@ Original sources are from [CercubePlus](https://github.com/qnblackcat/CercubePlu
 
 # Download (IPA)
 
-- **CercubePlus** (or you can call it Cercube+) requires iOS & iPadOS 13.0 and later. The latest version of **CercubePlus** can be found in the [Release tab](https://github.com/ISnackable/CercubePlus/releases).
+- **CercubePlus** (or you can call it Cercube+) requires iOS & iPadOS 13.0 and later. The latest version of **CercubePlus** can be found in the [Release tab](https://github.com/qnblackcat/CercubePlus/releases).
 
-- Version info: _(Mar 12)_
+- For AltStore user:
 
-|      **Tweaks/App**      | **Version** |                          **Open source**                           |
-| :----------------------: | :---------: | :----------------------------------------------------------------: |
-|       **YouTube**        |   17.09.1   |                                 ✖︎                                 |
-|       **Cercube**        |    5.3.7    |                                 ✖︎                                 |
-|    **iSponsorBlock**     |   1.0-13    |        [✔︎](https://github.com/Galactic-Dev/iSponsorBlock)         |
-| **Alderis Color Picker** |    1.1.2    |               [✔︎](https://github.com/hbang/Alderis)               |
-|     **YTABGoodies**      |     1.0     | [✔︎](https://poomsmart.github.io/repo/depictions/ytabgoodies.html) |
-|     **NoYTPremium**      |    1.0.2    |           [✔︎](https://github.com/PoomSmart/NoYTPremium)           |
-|    **YTNoHoverCards**    |    0.0.3    |         [✔︎](https://github.com/level3tjg/YTNoHoverCards)          |
-|        **YouPiP**        |    1.6.8    |             [✔︎](https://github.com/PoomSmart/YouPiP)              |
+  - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
+  - [Open in AltStore (v17.15.1-5.3.9)](https://tinyurl.com/yhsfn372) - It will take a while to install because AltStore needs to download the IPA.
+
+- Version info: _(Apr 18)_
+
+<details>
+  <summary>Expand!</summary>
+
+|       **Tweaks/App**       | **Version** |                          **Open source**                           |
+| :------------------------: | :---------: | :----------------------------------------------------------------: |
+|        **YouTube**         |   17.15.1   |                                 ✖︎                                 |
+|        **Cercube**         |    5.3.9    |                                 ✖︎                                 |
+| **Return YouTube Dislike** |    1.6.4    |     [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes)     |
+|     **iSponsorBlock**      |   1.0-14    |        [✔︎](https://github.com/Galactic-Dev/iSponsorBlock)         |
+|  **Alderis Color Picker**  |    1.1.2    |               [✔︎](https://github.com/hbang/Alderis)               |
+|      **YTABGoodies**       |     1.0     | [✔︎](https://poomsmart.github.io/repo/depictions/ytabgoodies.html) |
+|      **NoYTPremium**       |    1.0.2    |           [✔︎](https://github.com/PoomSmart/NoYTPremium)           |
+| **YTClassicVideoQuality**  |    1.0.1    |      [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality)      |
+|     **YTNoHoverCards**     |    0.0.3    |         [✔︎](https://github.com/level3tjg/YTNoHoverCards)          |
+|         **YTUHD**          |    1.2.6    |              [✔︎](https://github.com/PoomSmart/YTUHD)              |
+|         **YouPiP**         |    1.6.9    |             [✔︎](https://github.com/PoomSmart/YouPiP)              |
+|        **YTSpeed**         |    1.0.1    |             [✔︎](https://github.com/Lyvendia/YTSpeed)              |
+|    **YTAutoFullScreen**    |    1.0.1    |             [✔︎](https://github.com/Lyvendia/YTSpeed)              |
+
+</details>
 
 # Building (optional)
 
