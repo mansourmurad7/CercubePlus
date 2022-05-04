@@ -18,3 +18,7 @@
 	path = Tweaks/YouPiP
 	url = https://github.com/ISnackable/YouPiP
 	branch = main
+[submodule "Extensions"]
+	path = Extensions
+	url = https://github.com/CokePokes/YoutubeExtensions.git
+	branch = main
