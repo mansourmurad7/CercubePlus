@@ -2,12 +2,15 @@
 
 Original sources are from [CercubePlus](https://github.com/qnblackcat/CercubePlus) by [**qnblackcat**](https://github.com/qnblackcat). This fork just encompasses my own customization and tweak variation.
 
+![cydia-1900000833-iphone-0-1628581139 2](https://user-images.githubusercontent.com/52943116/135557251-f4be8ccf-8f0b-4d19-9fcf-6c9544aba281.PNG)
+
 # Table of Contents
 
 - [Credits](#credits)
 - [Features](#features)
 - [Known issues](#known-issues)
 - [Download (IPA)](#download-ipa)
+- [Support the developers!](#support-the-developers)
 - [Building (optional)](#building-optional)
 
 # Credits
@@ -20,7 +23,7 @@ Original sources are from [CercubePlus](https://github.com/qnblackcat/CercubePlu
 
 - [PoomSmart](https://twitter.com/poomsmart?s=21) - the developer of many tweaks that are used by CercubePlus, such as [YTABGoodies](https://poomsmart.github.io/repo/depictions/ytabgoodies.html), [NOYTPremium](https://poomsmart.github.io/repo/depictions/noytpremium.html), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTAutoFullScreen](https://github.com/PoomSmart/YTAutoFullScreen/), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html), [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html), and [Return YouTube Dislike](https://github.com/PoomSmart/Return-YouTube-Dislikes).
 
-- [level3tjg](https://twitter.com/level3tjg?s=21) for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards).
+- [level3tjg](https://twitter.com/level3tjg) - for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards) and [YTMiniplayerEnabler](https://github.com/level3tjg/YTMiniplayerEnabler).
 
 - [YouTube Extensions](https://github.com/CokePokes/YoutubeExtensions) by [CokePokes](https://github.com/CokePokes/).
 
@@ -63,7 +66,7 @@ any many more...
 
 # Known issues
 
-1. **Cercube**: Hide Cast button is not working.
+1. **Cercube**: Hide Cast button is not working. (Workaround: Hide cast button in CercubePlus settings)
 
 2. **YouPiP** (iOS 14.0 - 14.4.2): due to Apple's fault, you may encounter the _speedup-bug_ as described [here](https://drive.google.com/file/d/1NKdv1fr_KRWgD8nhkMDfG2eLBnbdeVtX/view?usp=sharing). The bug also happens when you try to play multi-sources of sound at the same time. Enable **LegacyPiP** is a workaround. Keep in mind that LegacyPiP also removes UHD quality and breaks YouTube Autoplay next. Use it at your own risk!
 
@@ -80,29 +83,56 @@ any many more...
 - For AltStore user:
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
-  - [Open in AltStore (v17.18.4-5.3.9)](https://tinyurl.com/2p8394bf) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.19.2-5.3.9)](https://tinyurl.com/mrxhhcrv) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(May 09)_
+- Version info: _(May 16)_
 
 <details>
   <summary>Expand!</summary>
 
-| **Tweaks/App** | **Version** | **Open source** |
-| :------------: | :----------:| :-------------: |
-| **YouTube** | 17.18.4 | ✖︎ |
-| [Cercube](https://apt.alfhaily.me/depiction/FDXO5R) | 5.3.9 | ✖︎ |
-| [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions/) | 1.2 | ✖︎ |
-| **Return YouTube Dislike** | 1.6.4 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
-| **iSponsorBlock** | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
-| **Alderis Color Picker** | 1.1.2| [✔︎](https://github.com/hbang/Alderis) |
-| **YTABGoodies** | 1.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytabgoodies.html) |
-| **NoYTPremium** | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
-| **YTClassicVideoQuality** | 1.0.1 | [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality) |
-| **YTNoHoverCards** | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
-| **YTUHD** | 1.2.7 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | 1.7.0 | [✔︎](https://github.com/PoomSmart/YouPiP) |
-| **YTSpeed** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
-| **YTAutoFullScreen** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
+|                           **Tweaks/App**                           | **Version** |                          **Open source**                           |
+| :----------------------------------------------------------------: | :---------: | :----------------------------------------------------------------: |
+|                            **YouTube**                             |   17.19.2   |                                 ✖︎                                 |
+|        [Cercube](https://apt.alfhaily.me/depiction/FDXO5R)         |    5.3.9    |                                 ✖︎                                 |
+| [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions/) |     1.2     |                                 ✖︎                                 |
+|                     **Return YouTube Dislike**                     |    1.6.4    |     [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes)     |
+|                         **iSponsorBlock**                          |   1.0-14    |        [✔︎](https://github.com/Galactic-Dev/iSponsorBlock)         |
+|                      **Alderis Color Picker**                      |    1.1.2    |               [✔︎](https://github.com/hbang/Alderis)               |
+|                          **YTABGoodies**                           |     1.0     | [✔︎](https://poomsmart.github.io/repo/depictions/ytabgoodies.html) |
+|                          **NoYTPremium**                           |    1.0.4    |           [✔︎](https://github.com/PoomSmart/NoYTPremium)           |
+|                     **YTClassicVideoQuality**                      |    1.0.1    |      [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality)      |
+|                         **YTNoHoverCards**                         |    0.0.3    |         [✔︎](https://github.com/level3tjg/YTNoHoverCards)          |
+|                             **YTUHD**                              |    1.2.7    |              [✔︎](https://github.com/PoomSmart/YTUHD)              |
+|                             **YouPiP**                             |    1.7.0    |             [✔︎](https://github.com/PoomSmart/YouPiP)              |
+|                            **YTSpeed**                             |    1.0.1    |             [✔︎](https://github.com/Lyvendia/YTSpeed)              |
+|                        **YTAutoFullScreen**                        |    1.0.1    |             [✔︎](https://github.com/Lyvendia/YTSpeed)              |
+|                      **YTMiniplayerEnabler**                       |    0.0.2    |       [✔︎](https://github.com/level3tjg/YTMiniplayerEnabler)       |
+
+</details>
+
+# Support the developers
+
+<details>
+  <summary>▶︎ MiRO92</summary>
+  
+- CashApp: https://cash.app/$MiRO92M
+ 
+- Other payment methods are available in uYou's settings.
+</details>
+
+<details>
+  <summary>▶︎ Poomsmart</summary>
+
+- Paypal: https://poomsmart.github.io/
+
+</details>
+
+<details>
+  <summary>▶︎ Galactic-dev</summary>
+  
+- Paypal: https://www.paypal.com/paypalme/DBrett684
+
+- Venmo: https://venmo.com/u/DavidBrett
 </details>
 
 # Building (optional)
