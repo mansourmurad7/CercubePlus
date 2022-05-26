@@ -1,7 +1,7 @@
 [submodule "Tweaks/Alderis"]
 	path = Tweaks/Alderis
 	url = https://github.com/ISnackable/Alderis
-	branch = master
+	branch = main
 [submodule "Tweaks/iSponsorBlock"]
 	path = Tweaks/iSponsorBlock
 	url = https://github.com/ISnackable/iSponsorBlock
