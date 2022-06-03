@@ -94,7 +94,7 @@ any many more...
 - Version info: _(June 01)_
 
 <details>
-  <summary>▶︎ Expand!</summary>
+  <summary>Expand!</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
@@ -120,14 +120,14 @@ any many more...
 # Support the developers
 
 <details>
-  <summary>▶︎ Poomsmart</summary>
+  <summary>Poomsmart</summary>
 
 - Paypal: https://poomsmart.github.io/
 
 </details>
 
 <details>
-  <summary>▶︎ Galactic-dev</summary>
+  <summary>Galactic-dev</summary>
   
 - Paypal: https://www.paypal.com/paypalme/DBrett684 
 
