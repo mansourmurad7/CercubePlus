@@ -31,9 +31,6 @@ jobs:
     name: Build CercubePlus
     runs-on: macos-latest
 
-    permissions:
-      contents: write
-
     steps:
       - name: Set Env
         run: echo "workspace=$GITHUB_WORKSPACE" >> $GITHUB_ENV
