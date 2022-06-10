@@ -36,7 +36,7 @@ jobs:
           submodules: recursive
 
       - name: Install Dependencies
-        run: brew install ldid dpkg
+        run: brew install ldid dpkg make
 
       - name: Setup Theos
         uses: actions/checkout@v3
@@ -70,6 +70,11 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
+      - name: Setup Theos Parallel Building
+      - run: |
+          echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
+          echo "$PATH"
+
       - name: Download Dylibs
         run: |
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h"
@@ -91,14 +96,16 @@ jobs:
           cd ${{ github.workspace }}/main
           (cd ${{ github.workspace }}/main/Tweaks/YouPiP && sed -i '' "14s#.*#YouPiP_FRAMEWORKS = AVKit AVFoundation UIKit#g" ./Makefile)
           make package FINALPACKAGE=1
+          (mv "packages/$(ls -t packages | head -n1)" "packages/CercubePlus_${{ env.YOUTUBE_VERSION  }}_${{ env.CERCUBE_VERSION }}.ipa")
           echo "::set-output name=package::$(ls -t packages | head -n1)"
         env:
           THEOS: ${{ github.workspace }}/theos
+          CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
+          YOUTUBE_VERSION: ${{ github.event.inputs.youtube_version }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CERCUBE_VERSION: ${{ github.event.inputs.cercube_version }}
           YOUTUBE_VERSION: ${{ github.event.inputs.youtube_version }}
         with:
