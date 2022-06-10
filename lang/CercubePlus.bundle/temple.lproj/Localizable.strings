@@ -1,3 +1,12 @@
+// How to translate uYouPlus to your languate:
+//
+// 1. Fork uYouPlus repo
+// 2. Rename the temple.lproj folder to your <lang_code>.lproj id. For example: ru.lproj for Russia
+// 3. Translate each line below after each =
+// 4. Open a Pull Request
+//
+// If your language already exists then feel free to check it and/or improve it!
+//
 // Settings
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Hide Previous and Next button";
