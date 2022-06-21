@@ -16,7 +16,7 @@
 	branch = master
 [submodule "Tweaks/YouPiP"]
 	path = Tweaks/YouPiP
-	url = https://github.com/ISnackable/YouPiP
+	url = https://github.com/PoomSmart/YouPiP
 	branch = main
 [submodule "Extensions"]
 	path = Extensions
