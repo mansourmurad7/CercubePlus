@@ -29,8 +29,6 @@ Original sources are from [CercubePlus](https://github.com/qnblackcat/CercubePlu
 
 - [YouTube Extensions](https://github.com/CokePokes/YoutubeExtensions) by [CokePokes](https://github.com/CokePokes/).
 
-- [Al4ise](https://github.com/Al4ise) for [Azule](https://github.com/Al4ise/Azule), a tool used to inject jailbreak tweaks into jailed iOS apps.
-
 - [theos team](https://github.com/theos/theos) for theos & theos-jailed.
 
 # Features
@@ -85,17 +83,17 @@ any many more...
 - For AltStore user:
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
-  - [Open in AltStore (v17.24.4-5.3.9)](https://tinyurl.com/4p58bah2) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.25.1-5.3.10)](https://tinyurl.com/4rvjvx97) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(June 22)_
+- Version info: _(June 30)_
 
 <details>
   <summary>Expand!</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.24.4 | ✖︎ |
-| [Cercube](https://apt.alfhaily.me/depiction/FDXO5R) | 5.3.9 | ✖︎ |
+| **YouTube** | 17.25.1 | ✖︎ |
+| [Cercube](https://apt.alfhaily.me/depiction/FDXO5R) | 5.3.10 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions/) | 1.2 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.5 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 | **iSponsorBlock** | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
@@ -104,8 +102,8 @@ any many more...
 | **NoYTPremium** | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
 | **YTClassicVideoQuality** | 1.0.1 | [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality) |
 | **YTNoHoverCards** | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
-| **YTUHD** | 1.2.7 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | 1.7.4 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **YTUHD** | 1.2.8 | [✔︎](https://github.com/PoomSmart/YTUHD) |
+| **YouPiP** | 1.7.7 | [✔︎](https://github.com/PoomSmart/YouPiP) |
 | **IAmYouTube** | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
 | **YTSpeed** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
 | **YTAutoFullScreen** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
