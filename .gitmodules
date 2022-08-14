@@ -30,3 +30,7 @@
 	path = Tweaks/YTUHD
 	url = https://github.com/PoomSmart/YTUHD
 	branch = master
+[submodule "Tweaks/YTSpeed"]
+	path = Tweaks/YTSpeed
+	url = https://github.com/qnblackcat/YTSpeed.git
+	branch = main
