@@ -2,6 +2,8 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 #import <dlfcn.h>
+#import <sys/utsname.h>
+#import <substrate.h>
 #import "Header.h"
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
@@ -106,20 +108,17 @@ BOOL hidePaidPromotionCard() {
 BOOL hideNotificationButton() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideNotificationButton_enabled"];
 }
-BOOL fixGoogleSigin() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"fixGoogleSigin_enabled"];
+BOOL fixGoogleSignIn() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"fixGoogleSignIn_enabled"];
 }
 BOOL replacePreviousAndNextButton() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"replacePreviousAndNextButton_enabled"];
 }
+BOOL dontEatMyContent() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"dontEatMyContent_enabled"];
+}
 
 # pragma mark - Tweaks
-// Enable Reorder videos from playlist while on the Watch page - @PoomSmart
-%hook YTIPlaylistPanelVideoRenderer 
-%new 
-- (BOOL)canReorder { return YES; }
-%end
-
 // Skips content warning before playing *some videos - @PoomSmart
 %hook YTPlayabilityResolutionUserActionUIController
 - (void)showConfirmAlert { [self confirmAlertDidPressConfirm]; }
@@ -383,9 +382,34 @@ BOOL replacePreviousAndNextButton() {
 }
 %end
 
+// Fix "Google couldn't confirm this attempt to sign in is safe. If you think this is a mistake, you can close and try again to sign in" - qnblackcat/uYouPlus#420
+// Thanks to @AhmedBafkir and @kkirby - https://github.com/qnblackcat/uYouPlus/discussions/447#discussioncomment-3672881
+%group gFixGoogleSignIn
+%hook SSORPCService
++ (id)URLFromURL:(id)arg1 withAdditionalFragmentParameters:(NSDictionary *)arg2 {
+    NSURL *orig = %orig;
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:orig resolvingAgainstBaseURL:NO];
+    NSMutableArray *newQueryItems = [urlComponents.queryItems mutableCopy];
+    for (NSURLQueryItem *queryItem in urlComponents.queryItems) {
+        if ([queryItem.name isEqualToString:@"system_version"]
+         || [queryItem.name isEqualToString:@"app_version"]
+         || [queryItem.name isEqualToString:@"kdlc"]
+         || [queryItem.name isEqualToString:@"kss"]
+         || [queryItem.name isEqualToString:@"lib_ver"]
+         || [queryItem.name isEqualToString:@"device_model"]) {
+            [newQueryItems removeObject:queryItem];
+        }
+    }
+    urlComponents.queryItems = [newQueryItems copy];
+    return urlComponents.URL;
+}
+%end
+%end
+
 // Fix "You can't sign in to this app because Google can't confirm that it's safe" warning when signing in. by julioverne & PoomSmart
 // https://gist.github.com/PoomSmart/ef5b172fd4c5371764e027bea2613f93
 // https://github.com/qnblackcat/uYouPlus/pull/398
+/* 
 %group gDevice_challenge_request_hack
 %hook SSOService
 + (id)fetcherWithRequest:(NSMutableURLRequest *)request configuration:(id)configuration {
@@ -401,6 +425,7 @@ BOOL replacePreviousAndNextButton() {
 }
 %end
 %end
+*/ 
 
 // Fix login for YouTube 17.33.2 and higher - @BandarHL
 // https://gist.github.com/BandarHL/492d50de46875f9ac7a056aad084ac10
@@ -650,6 +675,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 - (void)didMoveToWindow {
     %orig;
     if (isDarkMode()) { 
+        self.backgroundColor = raisedColor;
         self.subviews[1].backgroundColor = raisedColor;
         self.superview.backgroundColor = raisedColor;
     }
@@ -751,6 +777,160 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
+// DontEatMyContent - @therealFoxster: https://github.com/therealFoxster/DontEatMyContent
+double aspectRatio = 16/9;
+bool zoomedToFill = false;
+
+MLHAMSBDLSampleBufferRenderingView *renderingView;
+NSLayoutConstraint *widthConstraint, *heightConstraint, *centerXConstraint, *centerYConstraint;
+
+%group gDontEatMyContent
+%hook YTPlayerViewController
+
+- (void)viewDidAppear:(BOOL)animated {
+    YTPlayerView *playerView = [self playerView];
+    UIView *renderingViewContainer = MSHookIvar<UIView *>(playerView, "_renderingViewContainer");
+    renderingView = [playerView renderingView];
+
+    CGFloat constant = 23; // Make renderingView a bit larger since safe area has sizeable margins from the notch and side borders; tested on iPhone 13 mini
+
+    widthConstraint = [renderingView.widthAnchor constraintEqualToAnchor:renderingViewContainer.safeAreaLayoutGuide.widthAnchor constant:constant];
+    heightConstraint = [renderingView.heightAnchor constraintEqualToAnchor:renderingViewContainer.safeAreaLayoutGuide.heightAnchor constant:constant];
+    centerXConstraint = [renderingView.centerXAnchor constraintEqualToAnchor:renderingViewContainer.centerXAnchor];
+    centerYConstraint = [renderingView.centerYAnchor constraintEqualToAnchor:renderingViewContainer.centerYAnchor];
+
+    // playerView.backgroundColor = [UIColor greenColor];
+    // renderingViewContainer.backgroundColor = [UIColor redColor];
+    // renderingView.backgroundColor = [UIColor blueColor];
+
+    YTMainAppVideoPlayerOverlayViewController *activeVideoPlayerOverlay = [self activeVideoPlayerOverlay];
+
+    // Must check class since YTInlineMutedPlaybackPlayerOverlayViewController doesn't have -(BOOL)isFullscreen
+    if ([NSStringFromClass([activeVideoPlayerOverlay class]) isEqualToString:@"YTMainAppVideoPlayerOverlayViewController"] && [activeVideoPlayerOverlay isFullscreen]) {
+        activate();
+    } else {
+        center();
+    }
+    %orig(animated);
+}
+- (void)didPressToggleFullscreen {  
+    YTMainAppVideoPlayerOverlayViewController *activeVideoPlayerOverlay = [self activeVideoPlayerOverlay];
+
+    if (![activeVideoPlayerOverlay isFullscreen]) // Entering fullscreen
+        activate();
+    else // Exiting fullscreen
+        deactivate();
+
+    %orig;
+}
+- (void)didSwipeToEnterFullscreen { 
+    %orig; activate(); 
+}
+- (void)didSwipeToExitFullscreen { 
+    %orig; deactivate();
+}
+// Get video aspect ratio; doesn't work for some users; see -(void)resetForVideoWithAspectRatio:(double)
+- (void)singleVideo:(id)arg1 aspectRatioDidChange:(CGFloat)arg2 {
+    aspectRatio = arg2;
+    if (aspectRatio == 0.0) { 
+        // App backgrounded
+    } else if (aspectRatio < THRESHOLD) {
+        deactivate();
+    } else {
+        activate();
+    }
+    %orig(arg1, arg2);
+}
+%end
+
+%hook YTVideoZoomOverlayView
+- (void)didRecognizePinch:(UIPinchGestureRecognizer *)pinchGestureRecognizer {
+    // %log((CGFloat) [pinchGestureRecognizer scale], (CGFloat) [pinchGestureRecognizer velocity]);
+    if ([pinchGestureRecognizer velocity] <= 0.0) { // >>Zoom out<<
+        zoomedToFill = false;
+        activate();
+    } else if ([pinchGestureRecognizer velocity] > 0.0) { // <<Zoom in>>
+        zoomedToFill = true;
+        deactivate();
+    }
+
+    %orig(pinchGestureRecognizer);
+}
+- (void)flashAndHideSnapIndicator {}
+
+// https://github.com/lgariv/UniZoom/blob/master/Tweak.xm
+- (void)setSnapIndicatorVisible:(bool)arg1 {
+    %orig(NO);
+}
+%end
+
+%hook YTVideoZoomOverlayController
+// Get video aspect ratio; fallback for -(void)singleVideo:(id)aspectRatioDidChange:(CGFloat)
+- (void)resetForVideoWithAspectRatio:(double)arg1 {
+    aspectRatio = arg1;
+    %log;
+    if (aspectRatio == 0.0) {} 
+    else if (aspectRatio < THRESHOLD) {
+        deactivate();
+    } else {
+        activate();
+    }
+    %orig(arg1);
+}
+%end
+%end // gDonEatMyContent
+
+// DontEatMycontent - detecting device model
+// https://stackoverflow.com/a/11197770/19227228
+ NSString* deviceName() {
+     struct utsname systemInfo;
+     uname(&systemInfo);
+     return [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+ }
+
+ BOOL isDeviceSupported() {
+     NSString *identifier = deviceName();
+     NSArray *unsupportedDevices = UNSUPPORTED_DEVICES;
+
+     for (NSString *device in unsupportedDevices) {
+         if ([device isEqualToString:identifier]) {
+             return NO;
+         }
+     }
+
+     if ([identifier containsString:@"iPhone"]) {
+         NSString *model = [identifier stringByReplacingOccurrencesOfString:@"iPhone" withString:@""];
+         model = [model stringByReplacingOccurrencesOfString:@"," withString:@"."];
+         if ([identifier isEqualToString:@"iPhone13,1"]) { // iPhone 12 mini
+             return YES; 
+         } else if ([model floatValue] >= 14.0) { // iPhone 13 series and newer
+             return YES;
+         } else return NO;
+     } else return NO;
+ }
+
+ void activate() {
+     if (aspectRatio < THRESHOLD || zoomedToFill) return;
+     // NSLog(@"activate");
+     center();
+     renderingView.translatesAutoresizingMaskIntoConstraints = NO;
+     widthConstraint.active = YES;
+     heightConstraint.active = YES;
+ }
+
+ void deactivate() {
+     // NSLog(@"deactivate");
+     center();
+     renderingView.translatesAutoresizingMaskIntoConstraints = YES;
+     widthConstraint.active = NO;
+     heightConstraint.active = NO;
+ }
+
+ void center() {
+     centerXConstraint.active = YES;
+     centerYConstraint.active = YES;
+ }
+
 // YTNoShorts: https://github.com/MiRO92/YTNoShorts
 %hook YTAsyncCollectionView
 - (id)cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -792,12 +972,15 @@ static void replaceTab(YTIGuideResponse *response) {
        %init(gHideCastButton);
     }
     if (hidePreviousAndNextButton()) {
-        %init(gHidePreviousAndNextButton);
+       %init(gHidePreviousAndNextButton);
     }
     if (replacePreviousAndNextButton()) {
-        %init(gReplacePreviousAndNextButton);
+       %init(gReplacePreviousAndNextButton);
     }
-    if (!fixGoogleSigin()) {
-        %init(gDevice_challenge_request_hack);
+	if (dontEatMyContent() && isDeviceSupported()) {
+       %init(gDontEatMyContent);
+	}
+    if (!fixGoogleSignIn()) {
+       %init(gFixGoogleSignIn);
     }
 }
