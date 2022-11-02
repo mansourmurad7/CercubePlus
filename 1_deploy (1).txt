@@ -1,0 +1,133 @@
+2022-10-21T12:28:22.9442890Z Requested labels: ubuntu-latest
+2022-10-21T12:28:22.9442922Z Job defined at: mansourmurad7/mansourmurad7/.github/workflows/static.yml@refs/heads/main
+2022-10-21T12:28:22.9442941Z Waiting for a runner to pick up this job...
+2022-10-21T12:28:23.5226706Z Job is waiting for a hosted runner to come online.
+2022-10-21T12:28:27.1450500Z Job is about to start running on the hosted runner: Hosted Agent (hosted)
+2022-10-21T12:28:31.1331066Z Current runner version: '2.298.2'
+2022-10-21T12:28:31.1360373Z ##[group]Operating System
+2022-10-21T12:28:31.1360968Z Ubuntu
+2022-10-21T12:28:31.1361224Z 20.04.5
+2022-10-21T12:28:31.1361509Z LTS
+2022-10-21T12:28:31.1361809Z ##[endgroup]
+2022-10-21T12:28:31.1362131Z ##[group]Runner Image
+2022-10-21T12:28:31.1362501Z Image: ubuntu-20.04
+2022-10-21T12:28:31.1362833Z Version: 20221018.2
+2022-10-21T12:28:31.1363306Z Included Software: https://github.com/actions/runner-images/blob/ubuntu20/20221018.2/images/linux/Ubuntu2004-Readme.md
+2022-10-21T12:28:31.1363947Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu20%2F20221018.2
+2022-10-21T12:28:31.1364440Z ##[endgroup]
+2022-10-21T12:28:31.1364767Z ##[group]Runner Image Provisioner
+2022-10-21T12:28:31.1365112Z 2.0.91.1
+2022-10-21T12:28:31.1365411Z ##[endgroup]
+2022-10-21T12:28:31.1366081Z ##[group]GITHUB_TOKEN Permissions
+2022-10-21T12:28:31.1366613Z Contents: read
+2022-10-21T12:28:31.1366939Z Metadata: read
+2022-10-21T12:28:31.1367417Z Pages: write
+2022-10-21T12:28:31.1367799Z ##[endgroup]
+2022-10-21T12:28:31.1371417Z Secret source: Actions
+2022-10-21T12:28:31.1371861Z Prepare workflow directory
+2022-10-21T12:28:31.2200091Z Prepare all required actions
+2022-10-21T12:28:31.2383751Z Getting action download info
+2022-10-21T12:28:31.5120031Z Download action repository 'actions/checkout@v3' (SHA:93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8)
+2022-10-21T12:28:31.8120680Z Download action repository 'actions/configure-pages@v2' (SHA:2ce6d5eaa1f7b36a30c9b424cd73fab661857cfe)
+2022-10-21T12:28:31.9774934Z Download action repository 'actions/upload-pages-artifact@v1' (SHA:a597aecd27af1cf14095ccaa29169358e3d91e28)
+2022-10-21T12:28:32.1877149Z Download action repository 'actions/deploy-pages@v1' (SHA:69a62cdfa4c32e0d925268597986261876cac577)
+2022-10-21T12:28:32.4812248Z Getting action download info
+2022-10-21T12:28:32.7629039Z Download action repository 'actions/upload-artifact@main' (SHA:3cea5372237819ed00197afe530f5a7ea3e805c8)
+2022-10-21T12:28:33.0414477Z ##[group]Run actions/checkout@v3
+2022-10-21T12:28:33.0414806Z with:
+2022-10-21T12:28:33.0415040Z   repository: mansourmurad7/mansourmurad7
+2022-10-21T12:28:33.0415555Z   token: ***
+2022-10-21T12:28:33.0415771Z   ssh-strict: true
+2022-10-21T12:28:33.0415994Z   persist-credentials: true
+2022-10-21T12:28:33.0416233Z   clean: true
+2022-10-21T12:28:33.0416447Z   fetch-depth: 1
+2022-10-21T12:28:33.0416643Z   lfs: false
+2022-10-21T12:28:33.0417022Z   submodules: false
+2022-10-21T12:28:33.0417256Z   set-safe-directory: true
+2022-10-21T12:28:33.0417470Z ##[endgroup]
+2022-10-21T12:28:33.3246913Z Syncing repository: mansourmurad7/mansourmurad7
+2022-10-21T12:28:33.3248634Z ##[group]Getting Git version info
+2022-10-21T12:28:33.3249240Z Working directory is '/home/runner/work/mansourmurad7/mansourmurad7'
+2022-10-21T12:28:33.3249762Z [command]/usr/bin/git version
+2022-10-21T12:28:33.3380279Z git version 2.38.1
+2022-10-21T12:28:33.3382130Z ##[endgroup]
+2022-10-21T12:28:33.3417282Z Temporarily overriding HOME='/home/runner/work/_temp/a347476e-1225-4c9f-8254-fd11836c2fdc' before making global git config changes
+2022-10-21T12:28:33.3417830Z Adding repository directory to the temporary git global config as a safe directory
+2022-10-21T12:28:33.3418389Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/mansourmurad7/mansourmurad7
+2022-10-21T12:28:33.3457637Z Deleting the contents of '/home/runner/work/mansourmurad7/mansourmurad7'
+2022-10-21T12:28:33.3462671Z ##[group]Initializing the repository
+2022-10-21T12:28:33.3466355Z [command]/usr/bin/git init /home/runner/work/mansourmurad7/mansourmurad7
+2022-10-21T12:28:33.3532356Z hint: Using 'master' as the name for the initial branch. This default branch name
+2022-10-21T12:28:33.3533094Z hint: is subject to change. To configure the initial branch name to use in all
+2022-10-21T12:28:33.3533610Z hint: of your new repositories, which will suppress this warning, call:
+2022-10-21T12:28:33.3534117Z hint: 
+2022-10-21T12:28:33.3534755Z hint: 	git config --global init.defaultBranch <name>
+2022-10-21T12:28:33.3535340Z hint: 
+2022-10-21T12:28:33.3535808Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2022-10-21T12:28:33.3536458Z hint: 'development'. The just-created branch can be renamed via this command:
+2022-10-21T12:28:33.3536972Z hint: 
+2022-10-21T12:28:33.3537359Z hint: 	git branch -m <name>
+2022-10-21T12:28:33.3543590Z Initialized empty Git repository in /home/runner/work/mansourmurad7/mansourmurad7/.git/
+2022-10-21T12:28:33.3550528Z [command]/usr/bin/git remote add origin https://github.com/mansourmurad7/mansourmurad7
+2022-10-21T12:28:33.3593355Z ##[endgroup]
+2022-10-21T12:28:33.3594048Z ##[group]Disabling automatic garbage collection
+2022-10-21T12:28:33.3600669Z [command]/usr/bin/git config --local gc.auto 0
+2022-10-21T12:28:33.3634832Z ##[endgroup]
+2022-10-21T12:28:33.3637324Z ##[group]Setting up auth
+2022-10-21T12:28:33.3647026Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2022-10-21T12:28:33.3685141Z [command]/usr/bin/git submodule foreach --recursive git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :
+2022-10-21T12:28:33.4040788Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2022-10-21T12:28:33.4077103Z [command]/usr/bin/git submodule foreach --recursive git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :
+2022-10-21T12:28:33.4325798Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2022-10-21T12:28:33.4372899Z ##[endgroup]
+2022-10-21T12:28:33.4373538Z ##[group]Fetching the repository
+2022-10-21T12:28:33.4390836Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +c73f381d77f4314b4e787e2951e95db79d00a664:refs/remotes/origin/main
+2022-10-21T12:28:33.6090932Z remote: Enumerating objects: 6, done.        
+2022-10-21T12:28:33.6121217Z remote: Counting objects:  16% (1/6)        
+2022-10-21T12:28:33.6122036Z remote: Counting objects:  33% (2/6)        
+2022-10-21T12:28:33.6124372Z remote: Counting objects:  50% (3/6)        
+2022-10-21T12:28:33.6125891Z remote: Counting objects:  66% (4/6)        
+2022-10-21T12:28:33.6129728Z remote: Counting objects:  83% (5/6)        
+2022-10-21T12:28:33.6130414Z remote: Counting objects: 100% (6/6)        
+2022-10-21T12:28:33.6131366Z remote: Counting objects: 100% (6/6), done.        
+2022-10-21T12:28:33.6135746Z remote: Compressing objects:  25% (1/4)        
+2022-10-21T12:28:33.6136387Z remote: Compressing objects:  50% (2/4)        
+2022-10-21T12:28:33.6139604Z remote: Compressing objects:  75% (3/4)        
+2022-10-21T12:28:33.6141170Z remote: Compressing objects: 100% (4/4)        
+2022-10-21T12:28:33.6142262Z remote: Compressing objects: 100% (4/4), done.        
+2022-10-21T12:28:33.6147851Z remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0        
+2022-10-21T12:28:33.6230235Z From https://github.com/mansourmurad7/mansourmurad7
+2022-10-21T12:28:33.6231707Z  * [new ref]         c73f381d77f4314b4e787e2951e95db79d00a664 -> origin/main
+2022-10-21T12:28:33.6276891Z ##[endgroup]
+2022-10-21T12:28:33.6277638Z ##[group]Determining the checkout info
+2022-10-21T12:28:33.6278354Z ##[endgroup]
+2022-10-21T12:28:33.6279324Z ##[group]Checking out the ref
+2022-10-21T12:28:33.6279949Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2022-10-21T12:28:33.6367668Z Switched to a new branch 'main'
+2022-10-21T12:28:33.6372671Z branch 'main' set up to track 'origin/main'.
+2022-10-21T12:28:33.6397779Z ##[endgroup]
+2022-10-21T12:28:33.6458036Z [command]/usr/bin/git log -1 --format='%H'
+2022-10-21T12:28:33.6490089Z 'c73f381d77f4314b4e787e2951e95db79d00a664'
+2022-10-21T12:28:33.6766409Z ##[group]Run actions/configure-pages@v2
+2022-10-21T12:28:33.6766678Z with:
+2022-10-21T12:28:33.6767040Z   token: ***
+2022-10-21T12:28:33.6767344Z   enablement: true
+2022-10-21T12:28:33.6767548Z ##[endgroup]
+2022-10-21T12:28:33.8737256Z ##[warning]Get Pages site failed
+2022-10-21T12:28:33.9691975Z ##[error]Create Pages site failed
+2022-10-21T12:28:33.9693502Z ##[error]AxiosError: Request failed with status code 403
+2022-10-21T12:28:33.9798548Z Post job cleanup.
+2022-10-21T12:28:34.1281272Z [command]/usr/bin/git version
+2022-10-21T12:28:34.1330162Z git version 2.38.1
+2022-10-21T12:28:34.1375293Z Temporarily overriding HOME='/home/runner/work/_temp/2da5916f-91c4-4b3b-aa6d-c164890be27b' before making global git config changes
+2022-10-21T12:28:34.1376627Z Adding repository directory to the temporary git global config as a safe directory
+2022-10-21T12:28:34.1381600Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/mansourmurad7/mansourmurad7
+2022-10-21T12:28:34.1424854Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2022-10-21T12:28:34.1461950Z [command]/usr/bin/git submodule foreach --recursive git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :
+2022-10-21T12:28:34.1692900Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2022-10-21T12:28:34.1721043Z http.https://github.com/.extraheader
+2022-10-21T12:28:34.1732905Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2022-10-21T12:28:34.1769061Z [command]/usr/bin/git submodule foreach --recursive git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :
+2022-10-21T12:28:34.2250072Z Evaluate and set environment url
+2022-10-21T12:28:34.2255210Z Evaluated environment url: 
+2022-10-21T12:28:34.2255652Z Cleaning up orphan processes
